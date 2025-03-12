@@ -38,10 +38,10 @@ type TPlatform =
   | 'ar-ios';
 
 type TChannel =
-  | 'AppLovin'
+  | 'Applovin'
   | 'Facebook'
   | 'Google'
-  | 'IronSource'
+  | 'Ironsource'
   | 'Liftoff'
   | 'Mintegral'
   | 'Moloco'
@@ -456,6 +456,13 @@ type TChannelPkgOptions = {
   resMapper?: TResourceData
 }
 
+type TFilePkgOptions = {
+  filePrefix: string
+  fileType: string
+  fileCompany: string
+  filePlatform: string
+}
+
 type TPlayableConfig = {
   /** 0 -> 横竖 1 -> 竖屏 2 -> 横屏 */
   playable_orientation: 0 | 1 | 2,
@@ -472,6 +479,8 @@ type TAdapterRC = {
   buildPlatform?: Platform
   skipBuild?: boolean
   orientation?: TWebOrientations
+  projectName?: string
+  fileOptions?: TFilePkgOptions
   exportChannels?: TChannel[]
   injectOptions?: {
     [key in TChannel]: TChannelRC

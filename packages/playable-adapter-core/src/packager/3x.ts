@@ -18,10 +18,10 @@ import {
 } from '@/channels'
 
 const channelExports: { [key in TChannel]: (options: TChannelPkgOptions) => Promise<void> } = {
-  AppLovin: export3xAppLovin,
+  Applovin: export3xAppLovin,
   Facebook: export3xFacebook,
   Google: export3xGoogle,
-  IronSource: export3xIronSource,
+  Ironsource: export3xIronSource,
   Liftoff: export3xLiftoff,
   Mintegral: export3xMintegral,
   Moloco: export3xMoloco,

@@ -48,6 +48,13 @@ export type TChannelPkgOptions = {
   compDiff?: number
 }
 
+export type TFilePkgOptions = {
+  filePrefix: string
+  fileType: string
+  fileCompany: string
+  filePlatform: string
+}
+
 export type TBuilderOptions = {
   channel: TChannel
   transformHTML?: ($: CheerioAPI) => Promise<void>
@@ -59,10 +66,10 @@ export type TZipFromSingleFileOptions = TBuilderOptions & {
 }
 
 export type TChannel =
-  | 'AppLovin'
+  | 'Applovin'
   | 'Facebook'
   | 'Google'
-  | 'IronSource'
+  | 'Ironsource'
   | 'Liftoff'
   | 'Mintegral'
   | 'Moloco'
@@ -80,6 +87,8 @@ export type TChannelRC = {
 export type TAdapterRC = {
   buildPlatform?: TPlatform
   orientation?: TWebOrientations
+  projectName?: string
+  fileOptions?: TFilePkgOptions
   skipBuild?: boolean
   exportChannels?: TChannel[]
   enableSplash?: boolean

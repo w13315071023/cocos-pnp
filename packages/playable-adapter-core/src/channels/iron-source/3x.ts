@@ -4,7 +4,7 @@ import { getChannelRCSdkScript } from '@/utils'
 import { TChannel, TChannelPkgOptions } from "@/typings"
 
 export const export3xIronSource = async (options: TChannelPkgOptions) => {
-  const channel: TChannel = 'IronSource'
+  const channel: TChannel = 'Ironsource'
   await exportSingleFile({
     ...options,
     channel,

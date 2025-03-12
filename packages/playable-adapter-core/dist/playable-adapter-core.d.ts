@@ -32,11 +32,18 @@ type TPlatform =
   | 'ar-android'
   | 'ar-ios';
 
+type TFilePkgOptions = {
+  filePrefix: string
+  fileType: string
+  fileCompany: string
+  filePlatform: string
+}
+
 type TChannel =
-  | 'AppLovin'
+  | 'Applovin'
   | 'Facebook'
   | 'Google'
-  | 'IronSource'
+  | 'Ironsource'
   | 'Liftoff'
   | 'Mintegral'
   | 'Moloco'
@@ -54,6 +61,8 @@ type TChannelRC = {
 type TAdapterRC = {
   buildPlatform?: TPlatform
   orientation?: TWebOrientations
+  projectName?: string
+  fileOptions?: TFilePkgOptions
   skipBuild?: boolean
   exportChannels?: TChannel[]
   enableSplash?: boolean
@@ -65,9 +74,9 @@ type TAdapterRC = {
   isZip?: boolean
 }
 
-declare type TMode = 'parallel' | 'serial';
+type TMode = 'parallel' | 'serial';
 
-declare type TOptions = {
+type TOptions = {
     buildFolderPath: string;
     adapterBuildConfig?: TAdapterRC | null;
 };

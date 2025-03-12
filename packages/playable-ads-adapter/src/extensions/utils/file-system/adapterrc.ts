@@ -65,6 +65,19 @@ export const getRCTinify = (): { tinify: boolean, tinifyApiKey: string, } => {
   }
 }
 
+export const getRCFileOptions = (): TFilePkgOptions => {
+  const adapterRCJson = getAdapterRCJson()
+  if (!adapterRCJson) {
+    return {
+      filePrefix:"TH_",
+      fileType:"-试玩",
+      fileCompany:"_ZSY_WFKJ_",
+      filePlatform:"_ALL"
+    }
+  }
+  return adapterRCJson.fileOptions!
+}
+
 export const getChannelRCSdkScript = (channel: TChannel): string => {
   const channelRCJson = getChannelRCJson(channel)
   return (!channelRCJson || !channelRCJson.sdkScript) ? '' : channelRCJson.sdkScript

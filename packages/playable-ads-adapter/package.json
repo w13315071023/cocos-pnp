@@ -21,7 +21,7 @@
   },
   "author": "ppgee",
   "scripts": {
-    "clear": "rm -rf dist/",
+    "clear": "echo y|rmdir /s .\\dist",
     "watch": "rollup -c -w",
     "build": "rollup -c",
     "build:2x": "pnpm clear && pnpm build --environment BUILD_VERSION:2x",
