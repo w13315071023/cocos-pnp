@@ -2,8 +2,9 @@ import { TPlayableConfig } from '@/typings'
 
 // game config
 export const PLAYABLE_DEFAULT_CONFIG: TPlayableConfig = {
-  playable_orientation: 0,
-  playable_languages: ["ja", "zh", "ar", "es", "en", "ko", "pt", "ru", "vi"]
+  playable_orientation: 1,
+  // playable_languages: ["ja", "zh", "ar", "es", "en", "ko", "pt", "ru", "vi"]
+  playable_languages: ["ar","en", "ja", "zhCN","zhTW","ko","vi"]
 }
 
 export const REPLACE_SYMBOL = '{{__adv_channels_adapter__}}'
