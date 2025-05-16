@@ -1,6 +1,6 @@
 import { join } from "path"
 import { CheerioAPI, load } from "cheerio";
-import { mkdirSync } from "fs"
+import { createWriteStream, mkdirSync } from "fs"
 import { MAX_ZIP_SIZE, REPLACE_SYMBOL } from "@/constants";
 import { injectFromRCJson } from "@/helpers/dom";
 import { TBuilderOptions, TChannel, TResourceData, TZipFromSingleFileOptions } from "@/typings";
@@ -8,6 +8,7 @@ import { getGlobalProjectBuildPath,getGlobalBuildConfig } from '@/global'
 import { writeToPath, readToPath, getOriginPkgPath, copyDirToPath, replaceGlobalSymbol, rmSync } from "@/utils"
 import { deflate } from 'pako'
 import { jszipCode } from "@/helpers/injects";
+import { execSync } from "child_process";
 
 const FILE_MAX_SIZE = MAX_ZIP_SIZE * .8
 
@@ -128,6 +129,11 @@ const genFileName = (channel: TChannel)=> {
   return fileName;
 }
 
+const zipFolder = async(sourceFolder:string,destZip:string)=> {
+  const zipexePath = join(`C:\\Program Files\\7-Zip`, '7z.exe');
+  execSync(`\"${zipexePath}\" a ${destZip} ${sourceFolder}\\*`);
+}
+
 export const exportSingleFile = async (singleFilePath: string, options: TBuilderOptions) => {
   const { channel, transformHTML, transform } = options
 
@@ -186,6 +192,8 @@ export const exportZipFromPkg = async (options: TBuilderOptions) => {
     await transform(destPath)
   }
 
+  await zipFolder(destPath, destPath+'.zip');
+
   console.info(`【${channel}】adaptation completed`)
 }
 
@@ -239,6 +247,8 @@ export const exportDirZipFromSingleFile = async (singleFilePath: string, options
   if (transform) {
     await transform(destPath)
   }
+
+  await zipFolder(destPath, destPath+'.zip');
 
   console.info(`【${channel}】adaptation completed`)
 }

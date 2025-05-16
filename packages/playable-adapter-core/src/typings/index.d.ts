@@ -77,6 +77,7 @@ export type TChannel =
   | 'Rubeex'
   | 'Tiktok'
   | 'Unity'
+  | 'Snapchat'
 
 export type TChannelRC = {
   head: string
