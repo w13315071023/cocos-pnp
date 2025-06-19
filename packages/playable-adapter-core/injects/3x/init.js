@@ -184,29 +184,14 @@ window.__adapter_init = function () {
   }
 
   function __adapter_init_js() {
-    // const _createScript = System.__proto__.createScript
-    // System.__proto__.createScript = function (url) {
-    //   let baseUrl = url.replace(__adapter_get_base_url(), '')
-    //   let res = __adapter_get_script(baseUrl)
-    //   if (!res) {
-    //     console.error(`${url} 找不到资源`)
-    //     return _createScript.call(this, url)
-    //   }
-
-    //   const blob = new Blob([res], { type: 'text/javascript' });
-    //   return _createScript.call(this, URL.createObjectURL(blob))
-    // };
-    System.__proto__.createScript = function(_url) {
-      let baseUrl = _url.replace(__adapter_get_base_url(), '')
-      let res = __adapter_get_script(baseUrl)
-      var spt = document.createElement("script");
-      spt.async = !0,
-      spt.crossOrigin = "anonymous";
-      spt.text = res;
-      setTimeout(() => {
-        spt.dispatchEvent(new Event("load"));
-      });
-      return spt;
+    System.__proto__.createScript = function(e) {
+        var t = __adapter_get_script(e.replace(__adapter_get_base_url(), ""));
+        var s = document.createElement("script");
+        setTimeout(() => {
+          eval(t);
+          s.dispatchEvent(new Event("load"));
+        });
+        return s;
     }
   }
 

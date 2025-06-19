@@ -470,6 +470,12 @@ type TPlayableConfig = {
   playable_languages: string[]
 }
 
+type TNoPlayableConfig = {
+  /** 0 -> 横竖 1 -> 竖屏 2 -> 横屏 */
+  orientation: 0 | 1 | 2,
+  languages: string[]
+}
+
 type TChannelRC = {
   head: string
   body: string

@@ -40,6 +40,12 @@ export type TPlayableConfig = {
   playable_languages: string[]
 }
 
+export type TNoPlayableConfig = {
+  /** 0 -> 横竖 1 -> 竖屏 2 -> 横屏 */
+  orientation: 0 | 1 | 2,
+  languages: string[]
+}
+
 export type TResourceData = { [key: string]: string }
 
 export type TChannelPkgOptions = {

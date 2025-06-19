@@ -18,7 +18,7 @@ export const export3xSnapchat = async (options: TChannelPkgOptions) => {
       await exportConfigJson({
         destPath,
         orientation
-      })
+      },true)
     }
   })
 }
